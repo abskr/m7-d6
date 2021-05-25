@@ -1,5 +1,6 @@
 import React from "react";
-// import { toggleCompleted, reset } from "../store/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleCompleted } from "../store/actions";
 // import { Button } from "react-bootstrap";
 // import { connect } from "react-redux";
 
@@ -10,14 +11,17 @@ import React from "react";
 
 const List = (props) => {
 
+  const list = useSelector(state => state.list)
+  const dispatch = useDispatch()
+
     return (
       <>
         <ul>
-          {props.list.map((todo) => (
+          {list && list.map((todo) => (
             <li
               key={todo.id}
-              onClick={() => props.toggleCompleted(todo)}
-              className={todo.completed ? "strikethrough" : ""}
+              onClick={() => dispatch(toggleCompleted(todo))}
+              className={todo.completed ? 'strikethrough' : ''}
             >
               {todo.description}
             </li>

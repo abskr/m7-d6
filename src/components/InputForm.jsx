@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-// import uniqid from "uniqid";
+import { useDispatch } from "react-redux"
+import uniqid from "uniqid";
+import { addTodo , reset} from '../store/actions';
 // import List from "./List";
 // import { connect } from "react-redux";
 // import { addTodo } from "../store/actions";
@@ -10,41 +12,43 @@ import { Form, Button } from "react-bootstrap";
 // });
 
 const InputForm = (props) => {
-  // const [description, setDescription] = useState("");
+  const [description, setDescription] = useState("");
   // const [list, setList] = useState([])
+  // const list = useSelector((state) => state.list);
+  const dispatch = useDispatch()
 
   // const addTodo = (todo) => {
   //   setList(...list, todo)
   // }
   
-  // const handleChange = (event) => {
-  //   setDescription(event.target.value);
-  // };
+  const handleChange = (event) => {
+    setDescription(event.target.value);
+  };
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-  //   const todo = {
-  //     description: description,
-  //     id: uniqid(),
-  //     completed: false
-  //   };
+    const todo = {
+      description: description,
+      id: uniqid(),
+      completed: false
+    };
 
-  //   console.log(todo);
-  //   addTodo(todo);
-  //   setDescription("");
-  // };
+    console.log(todo);
+    dispatch(addTodo(todo));
+    setDescription("");
+  };
 
   return (
-    <Form onSubmit={props.handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Form.Control
         type='text'
         placeholder='New task...'
-        value={props.description}
-        onChange={props.handleChange}
+        value={description}
+        onChange={handleChange}
       />
       <Form.Control type='submit' />
-      <Button variant='primary' onClick={props.reset}>
+      <Button variant='primary' onClick={() => dispatch(reset())}>
         reset
       </Button>
     </Form>
