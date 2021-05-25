@@ -1,46 +1,54 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form } from "react-bootstrap";
-import uniqid from "uniqid";
-import { connect } from "react-redux";
-import { addTodo } from "../store/actions";
+// import uniqid from "uniqid";
+// import List from "./List";
+// import { connect } from "react-redux";
+// import { addTodo } from "../store/actions";
 
-const mapDispatchToProps = (dispatch) => ({
-  addTodo: (todo) => dispatch(addTodo(todo))
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   addTodo: (todo) => dispatch(addTodo(todo))
+// });
 
 const InputForm = (props) => {
-  const [description, setDescription] = useState("");
+  // const [description, setDescription] = useState("");
+  // const [list, setList] = useState([])
+
+  // const addTodo = (todo) => {
+  //   setList(...list, todo)
+  // }
   
-  const handleChange = (event) => {
-    setDescription(event.target.value);
-  };
+  // const handleChange = (event) => {
+  //   setDescription(event.target.value);
+  // };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
 
-    const todo = {
-      description: description,
-      id: uniqid(),
-      completed: false
-    };
+  //   const todo = {
+  //     description: description,
+  //     id: uniqid(),
+  //     completed: false
+  //   };
 
-    console.log(todo);
-    props.addTodo(todo);
-    setDescription("");
-  };
+  //   console.log(todo);
+  //   addTodo(todo);
+  //   setDescription("");
+  // };
 
   return (
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={props.handleSubmit}>
         <Form.Control
           type="text"
           placeholder="New task..."
-          value={description}
-          onChange={handleChange}
+          value={props.description}
+          onChange={props.handleChange}
         />
         <Form.Control type="submit" />
       </Form>
     );
 }
+
+export default InputForm
 
 // class InputForm extends Component {
 //   state = {
@@ -80,4 +88,4 @@ const InputForm = (props) => {
 //   }
 // }
 
-export default connect((s) => s, mapDispatchToProps)(InputForm);
+// export default connect((s) => s, mapDispatchToProps)(InputForm);

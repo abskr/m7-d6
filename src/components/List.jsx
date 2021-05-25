@@ -1,14 +1,15 @@
 import React from "react";
-import { toggleCompleted, reset } from "../store/actions";
+// import { toggleCompleted, reset } from "../store/actions";
 import { Button } from "react-bootstrap";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 
-const mapDispatchToProps = (dispatch) => ({
-  toggleCompleted: (id) => dispatch(toggleCompleted(id)),
-  reset: () => dispatch(reset())
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   toggleCompleted: (id) => dispatch(toggleCompleted(id)),
+//   reset: () => dispatch(reset())
+// });
 
 const List = (props) => {
+
     return (
       <>
         <ul>
@@ -27,4 +28,4 @@ const List = (props) => {
     );
 }
 
-export default connect((s) => s, mapDispatchToProps)(List);
+export default List
