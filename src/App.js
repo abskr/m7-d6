@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import InputForm from './components/InputForm';
 import List from './components/List';
-import store from './store';
-import { Provider } from 'react-redux';
+// import store from './store';
+// import { Provider } from 'react-redux';
 import uniqid from 'uniqid';
+import styled from 'styled-components'
 
 export default function App() {
   const [description, setDescription] = useState('');
@@ -45,11 +46,23 @@ const toggleCompleted = (todo) => {
     setList([])
   }
   return (
-    <Provider store={store}>
+    // <Provider store={store}>
       <div className='App'>
-        <InputForm handleSubmit={handleSubmit} handleChange={handleChange} description={description} />
-        <List list={list} reset={reset} toggleCompleted={toggleCompleted}/>
+        <MainContainer>
+          <InputForm handleSubmit={handleSubmit} handleChange={handleChange} description={description} reset={reset}/>
+          <List list={list} toggleCompleted={toggleCompleted}/>
+        </MainContainer>
       </div>
-    </Provider>
+    // </Provider>
   );
 }
+ const MainContainer = styled.div`
+  margin: auto;
+  padding-top: 1rem;
+  width: 60vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-self: center;
+ `

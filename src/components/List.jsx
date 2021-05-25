@@ -1,6 +1,6 @@
 import React from "react";
 // import { toggleCompleted, reset } from "../store/actions";
-import { Button } from "react-bootstrap";
+// import { Button } from "react-bootstrap";
 // import { connect } from "react-redux";
 
 // const mapDispatchToProps = (dispatch) => ({
@@ -23,7 +23,6 @@ const List = (props) => {
             </li>
           ))}
         </ul>
-        <Button onClick={props.reset}>reset</Button>
       </>
     );
 }

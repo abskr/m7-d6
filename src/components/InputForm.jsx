@@ -1,5 +1,5 @@
 import React from "react";
-import { Form } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 // import uniqid from "uniqid";
 // import List from "./List";
 // import { connect } from "react-redux";
@@ -36,16 +36,19 @@ const InputForm = (props) => {
   // };
 
   return (
-      <Form onSubmit={props.handleSubmit}>
-        <Form.Control
-          type="text"
-          placeholder="New task..."
-          value={props.description}
-          onChange={props.handleChange}
-        />
-        <Form.Control type="submit" />
-      </Form>
-    );
+    <Form onSubmit={props.handleSubmit}>
+      <Form.Control
+        type='text'
+        placeholder='New task...'
+        value={props.description}
+        onChange={props.handleChange}
+      />
+      <Form.Control type='submit' />
+      <Button variant='primary' onClick={props.reset}>
+        reset
+      </Button>
+    </Form>
+  );
 }
 
 export default InputForm
